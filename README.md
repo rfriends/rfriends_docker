@@ -1,9 +1,9 @@
 rfriends_dockerはdocker環境でrfriends3を動作させるスクリプトです。  
   
 cd ~/  
-wget -O rfriends_docker-main.zip https://github.com/rfriends/rfriends_docker/archive/master.zip  
-unzip rfriends_docker-main.zip  
-cd rfriends_docker-main    
+sudo apt install git  
+git clone https://github.com/rfriends/rfriends_docker.git  
+cd rfriends_docker  
   
 インストール方法は以下が参考になります。  
   
