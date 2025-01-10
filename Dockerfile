@@ -13,20 +13,20 @@ ENV LANGUAGE=en_US
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 
+# rfriends3 
+ENV SITE=https://github.com/rfriends/rfriends3/releases/latest/download
+ENV SCRIPT=rfriends3_latest_script.zip
+
 # rfriends用アプリのインストール
 
-RUN apt update && apt -y install \
+RUN apt-get update && apt-get -y install \
 unzip nano vim dnsutils iproute2 tzdata \
 at cron wget curl atomicparsley \
 php-cli php-xml php-zip php-mbstring php-json php-curl php-intl \
 ffmpeg
 
-# rfriendsのダウンロードと展開(ホスト共有しないとき用)
-#RUN wget http://rfriends.s1009.xrea.com/files3/rfriends3_latest_script.zip && \
-#    unzip rfriends3_latest_script.zip
-
-RUN wget http://rfriends.s1009.xrea.com/files3/rfriends3_latest_script.zip && \
-    unzip rfriends3_latest_script.zip
+# rfriends3のインストール
+RUN wget ${SITE}/${SCRIPT} && unzip ${SCRIPT}
 
 COPY start.sh .
 
