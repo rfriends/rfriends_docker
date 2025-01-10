@@ -1,8 +1,9 @@
 # Dockerfile for rfriends
 # 2023/07/09
 # 2023/07/29 20.04 -> 22.04
+# 2025/01/10 24.04
 #
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 # 文字化け対策
 ENV LANG C.UTF-8
