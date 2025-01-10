@@ -14,6 +14,20 @@ $ sudo docker run --rm -it rfriends3:latest
 172.17.0.2:8000
 のように表示されるので、ブラウザにそれを入力すれば、rfriends3が表示されます。
 まずは、ヘルプ->システム更新でrfriends3を最新にしてください。
-
+  
+３．その他  
+  
+コマンド覚書  
+  
+イメージ削除  
+docker images  
+docker stop rfriends3  
+docker rmi rfriends3  
+docker image prune  
+  
+コンテナ削除  
+docker ps -a  
+docker rm コンテナID  
+  
 以上
 
