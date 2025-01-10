@@ -1,8 +1,9 @@
 # Dockerfile for rfriends
 # 2023/07/09
 # 2023/07/29 20.04 -> 22.04
+# 2025/01/10 22.04 -> 24.04,github
 #
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 # 文字化け対策
 ENV LANG C.UTF-8
@@ -12,20 +13,14 @@ ENV LANGUAGE en_US
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 
-# rfriends用アプリのインストール
+# rfriendsのインストール
 
-run apt update && apt -y install \
-unzip nano vim dnsutils iproute2 tzdata \
-at cron wget curl atomicparsley \
-php-cli php-xml php-zip php-mbstring php-json php-curl php-intl \
-ffmpeg
-
-# rfriendsのダウンロードと展開(ホスト共有しないとき用)
-#run wget http://rfriends.s1009.xrea.com/files3/rfriends3_latest_script.zip && \
-#    unzip rfriends3_latest_script.zip
-
-run wget http://rfriends.s1009.xrea.com/files3/rfriends3_latest_script.zip && \
-    unzip rfriends3_latest_script.zip
+run apt-get git -y
+run cd ~/
+run rm -rf rfriends_ubuntu
+run git clone https://github.com/rfriends/rfriends_ubuntu
+run cd rfriends_ubuntu
+run sh rfriends_ubuntu
 
 COPY start.sh .
 
