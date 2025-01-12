@@ -27,16 +27,16 @@ ffmpeg
 # lighttpd
 RUN apt-get -y install lighttpd lighttpd-mod-webdav php-cgi
 
-COPY -p 15-fastcgi-php.conf /etc/lighttpd/conf-available/15-fastcgi-php.conf
-COPY -p lighttpd.conf /etc/lighttpd/lighttpd.conf
+COPY 15-fastcgi-php.conf /etc/lighttpd/conf-available/.
+COPY lighttpd.conf /etc/lighttpd/.
 
-RUN lighttpd-enable-mod fastcgi \ 
+RUN lighttpd-enable-mod fastcgi && \ 
 lighttpd-enable-mod fastcgi-php
 
 # rfriends3のインストール
 RUN wget ${SITE}/${SCRIPT} && unzip ${SCRIPT}
 
-ln -nfs /rfriends3/script/html/temp /rfriends3/script/html/webdav
+RUN ln -nfs /rfriends3/script/html/temp /rfriends3/script/html/webdav && \ 
 echo lighttpd > /rfriends3/rfriends3_boot.txt
 
 COPY start.sh .
