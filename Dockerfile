@@ -12,6 +12,7 @@ ENV LANGUAGE=en_US
 # タイムゾーン設定
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
+RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 # rfriends3 
 ENV SITE=https://github.com/rfriends/rfriends3/releases/latest/download
