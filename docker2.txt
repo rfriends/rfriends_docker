@@ -13,7 +13,7 @@ $ docker build -t rfriends3:latest Dockerfile2
 
 ２．実行
   #$ docker run --rm -it rfriends3:latest
-  $ sh ex_docker.sh
+  $ sh ex_docker2.sh
 
 実行画面に
 172.17.0.2:8000
