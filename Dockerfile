@@ -26,6 +26,7 @@ ffmpeg
 
 # lighttpd
 RUN apt-get -y install lighttpd lighttpd-mod-webdav php-cgi
+RUN mkdir -p /lighttpd/uploads
 
 COPY 15-fastcgi-php.conf /etc/lighttpd/conf-available/.
 COPY lighttpd.conf /etc/lighttpd/.
