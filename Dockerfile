@@ -2,6 +2,7 @@
 # 2023/07/09
 # 2023/07/29 20.04 -> 22.04
 # 2025/01/10 24.04
+# 2025/01/12 lighttpd
 #
 FROM ubuntu:24.04
 
@@ -17,6 +18,7 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 # rfriends3 
 ENV SITE=https://github.com/rfriends/rfriends3/releases/latest/download
 ENV SCRIPT=rfriends3_latest_script.zip
+ENV HOST=/usr/ubuntu
 
 # rfriends用アプリのインストール
 RUN apt-get update && apt-get -y install \
@@ -30,7 +32,7 @@ RUN apt-get -y install lighttpd lighttpd-mod-webdav php-cgi
 COPY 15-fastcgi-php.conf /etc/lighttpd/conf-available/.
 COPY lighttpd.conf /etc/lighttpd/.
 
-WORKDIR /home/ubuntu
+WORKDIR $HOME
 
 # rfriends3のインストール
 RUN wget ${SITE}/${SCRIPT} && unzip ${SCRIPT}
@@ -40,8 +42,17 @@ echo lighttpd > rfriends3/rfriends3_boot.txt
 
 RUN mkdir -p lighttpd/uploads
 
+RUN chown -R ubuntu:ubuntu lighttpd
+RUN chown -R ubuntu:ubuntu rfriends3
+
 RUN lighttpd-enable-mod fastcgi && \ 
 lighttpd-enable-mod fastcgi-php
+
+RUN service cron start
+RUN service atd start
+RUN service lighttpd start
+
+USER ubuntu
 
 COPY start.sh .
 
