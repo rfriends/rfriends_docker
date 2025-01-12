@@ -1,4 +1,4 @@
-2025/01/12現在、修正中
+2025/01/12現在、修正中  
 rfriends_dockerはdocker環境でrfriends3を動作させるスクリプトです。  
   
 cd ~/  
