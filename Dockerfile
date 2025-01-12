@@ -4,6 +4,9 @@
 # 2025/01/10 24.04
 # 2025/01/12 lighttpd
 #
+# 実行はroot
+# userで走らせるには、もう少し設定が必要です。
+#
 FROM ubuntu:24.04
 
 # 文字化け対策
@@ -37,13 +40,13 @@ WORKDIR $HOME
 # rfriends3のインストール
 RUN wget ${SITE}/${SCRIPT} && unzip ${SCRIPT}
 
-RUN ln -nfs rfriends3/script/html/temp rfriends3/script/html/webdav && \ 
+RUN ln -nfs $HOME/rfriends3/script/html/temp $HOME/rfriends3/script/html/webdav && \ 
 echo lighttpd > rfriends3/rfriends3_boot.txt
 
 RUN mkdir -p lighttpd/uploads
 
-RUN chown -R ubuntu:ubuntu lighttpd
-RUN chown -R ubuntu:ubuntu rfriends3
+RUN chown -R ubuntu:ubuntu lighttpd && \ 
+chown -R ubuntu:ubuntu rfriends3
 
 RUN lighttpd-enable-mod fastcgi && \ 
 lighttpd-enable-mod fastcgi-php
