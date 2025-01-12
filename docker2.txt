@@ -1,0 +1,36 @@
+2023/07/11
+2023/07/29 20.04 -> 22.04
+2025/01/10 24.04
+2025/01/13 user
+
+これはubuntu 22.04にrfriends3をインストールして実行するDockerfileです。
+Dockerfileと同じ場所にstart.shを置いてください。
+すでにdockerの環境は構築されているものとします。
+sudoなしで実行できるよう設定してください。
+
+１．イメージ作成
+$ docker build -t rfriends3:latest Dockerfile2
+
+２．実行
+  #$ docker run --rm -it rfriends3:latest
+  $ sh ex_docker.sh
+
+実行画面に
+172.17.0.2:8000
+のように表示されるので、ブラウザにそれを入力すれば、rfriends3が表示されます。
+まずは、ヘルプ->システム更新でrfriends3を最新にしてください。
+  
+３．その他  
+  
+コマンド覚書  
+  
+イメージ削除  
+docker images  
+docker rmi rfriends3  
+docker image prune  
+  
+コンテナ削除  
+docker ps -a  
+docker rm コンテナID  
+  
+以上
