@@ -47,6 +47,7 @@ COPY 15-fastcgi-php.conf /etc/lighttpd/conf-available/.
 COPY lighttpd2.conf /etc/lighttpd/lighttpd.conf
 sed -i s%rfriendshomedir%$HOME%g /etc/lighttpd/lighttpd.conf
 sed -i s%rfriendsuser%$$user%g /etc/lighttpd/lighttpd.conf
+mkdir -p /var/cache/lighttpd
 
 USER $user
 WORKDIR $HOME
