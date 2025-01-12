@@ -17,9 +17,9 @@ ENV HOME=/home/$user
 
 RUN apt-get update && apt-get install -y sudo
 RUN groupadd -g $gid $user
-RUN useradd -m -s /bin/bash -u $uid -g %gid -G sudo $user
+RUN useradd -m -s /bin/bash -u $uid -g $gid -G sudo $user
 RUN echo $user:$user | chpasswd
-run echo "$user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+RUN echo "$user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # 文字化け対策
 ENV LANG=C.UTF-8
