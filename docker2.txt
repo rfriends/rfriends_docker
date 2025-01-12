@@ -9,7 +9,7 @@ Dockerfileと同じ場所にstart.shを置いてください。
 sudoなしで実行できるよう設定してください。
 
 １．イメージ作成
-$ docker build -t rfriends3:latest Dockerfile2
+$ docker build ./ -t rfriends3:latest -f Dockerfile2
 
 ２．実行
   #$ docker run --rm -it rfriends3:latest
