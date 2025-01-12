@@ -18,7 +18,7 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 # rfriends3 
 ENV SITE=https://github.com/rfriends/rfriends3/releases/latest/download
 ENV SCRIPT=rfriends3_latest_script.zip
-ENV HOST=/usr/ubuntu
+ENV HOME=/home/ubuntu
 
 # rfriends用アプリのインストール
 RUN apt-get update && apt-get -y install \
@@ -47,12 +47,6 @@ RUN chown -R ubuntu:ubuntu rfriends3
 
 RUN lighttpd-enable-mod fastcgi && \ 
 lighttpd-enable-mod fastcgi-php
-
-RUN service cron start
-RUN service atd start
-RUN service lighttpd start
-
-USER ubuntu
 
 COPY start.sh .
 
