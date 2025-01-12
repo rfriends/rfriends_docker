@@ -5,5 +5,6 @@ echo $hn > rfriends3/rfriends3_server.txt
 #sh -c "cat /etc/*-release"
 cron &
 atd &
-sh rfriends3/rfriends3_server.sh 
+lighttpd &
+#sh rfriends3/rfriends3_server.sh 
 echo server exit
