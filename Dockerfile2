@@ -9,11 +9,11 @@ FROM ubuntu:24.04
 RUN userdel ubuntu && rm -rf /home/ubuntu
 #
 # user設定（環境に応じて変更）
+# uid,gidはホストの実行ユーザに合わせる
 ENV contshare=/tmp/share
-
-ENV user=`whoami`
-ENV uid=`id -u $user`
-ENV gid=`id -g $user`
+ENV user=user
+ENV uid=1000
+ENV gid=1000
 ENV HOME=/home/$user
 
 RUN apt-get update && apt-get install -y sudo
@@ -57,8 +57,10 @@ WORKDIR $HOME
 RUN wget ${SITE}/${SCRIPT} && unzip ${SCRIPT}
 
 RUN ln -nfs $HOME/rfriends3/script/html/temp $HOME/rfriends3/script/html/webdav && \ 
-RUN echo lighttpd > rfriends3/rfriends3_boot.txt && mkdir -p lighttpd/uploads
-RUN mkdir $HOME/tmp && mkdir -p $contshare/usr2/
+  echo lighttpd > rfriends3/rfriends3_boot.txt && \
+  mkdir -p lighttpd/uploads && \
+  mkdir $HOME/tmp
+
 RUN cat <<EOF > $HOME/rfriends3/config/usrdir.ini
 usrdir = "$contshare/usr2/"
 tmpdir = "$HOME/tmp/"
