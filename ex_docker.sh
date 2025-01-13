@@ -17,7 +17,7 @@ fi
 docker stop $contname
 docker rm   $contname
 #　コンテナ作成
-docker create --name $contname --mount type=bind,src=$hostdir,target=$contdir $imgname
+docker create -it --name $contname --mount type=bind,src=$hostdir,target=$contdir $imgname
 #　コンテナスタート
 docker start $contname
 #　アタッチ
