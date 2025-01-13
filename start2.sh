@@ -1,11 +1,14 @@
 #!/bin/bash
-hn=`hostname -i`:8000
-HOME=/home/ubuntu
+#
+if [ ! -d $contshare/usr2 ]; then
+  mkdir $contshare/usr2
+fi
 #
 sudo service cron start
 sudo service atd start
 #
 # built in web server
+#hn=`hostname -i`:8000
 #echo $hn > $HOME/rfriends3/rfriends3_server.txt
 #sh $HOME/rfriends3/rfriends3_server.sh
 #
