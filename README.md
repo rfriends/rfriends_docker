@@ -1,9 +1,9 @@
 rfriends_dockerはdocker環境でrfriends3を動作させるスクリプトです。  
   
 ## １．イメージ作成  
-$ git https://github.com/rfriends/rfriends_dockr.gi
-$ cd rfriends_docker
-
+$ git https://github.com/rfriends/rfriends_dockr.gi  
+$ cd rfriends_docker  
+  
 ホストで  
 $ id  
 uid=1000(user) gid=1000(user)  
