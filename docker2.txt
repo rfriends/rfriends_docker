@@ -3,7 +3,7 @@
 2025/01/10 24.04
 2025/01/13 user
 
-これはubuntu 22.04にrfriends3をインストールして実行するDockerfileです。
+これはubuntu 24.04にrfriends3をインストールして実行するDockerfileです。
 Dockerfileと同じ場所にstart.shを置いてください。
 すでにdockerの環境は構築されているものとします。
 sudoなしで実行できるよう設定してください。
@@ -28,9 +28,13 @@ $ docker build ./ -t rfriends3:latest -f Dockerfile2
 docker images  
 docker rmi rfriends3  
 docker image prune  
+イメージ全削除  
+$ docker rmi $(docker images -q)
   
 コンテナ削除  
 docker ps -a  
 docker rm コンテナID  
+コンテナ全削除  
+$ docker rm $(docker ps -aq)  
   
 以上
