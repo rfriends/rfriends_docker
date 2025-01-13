@@ -1,7 +1,7 @@
 rfriends_dockerはdocker環境でrfriends3を動作させるスクリプトです。  
   
 ## １．イメージ作成  
-$ git https://github.com/rfriends/rfriends_docker.gi  
+$ git https://github.com/rfriends/rfriends_docker.git  
 $ cd rfriends_docker  
   
 ホストで  
@@ -16,7 +16,7 @@ $ docker build ./ -t rfriends3
   
 ## ２．実行  
   
-$ sh ex_docker.sh  
+$ sh ex_rfriends.sh  
   
 実行画面に  
 172.17.0.2:8000  
