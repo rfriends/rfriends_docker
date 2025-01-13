@@ -50,5 +50,12 @@ docker ps -a
 docker rm コンテナID  
 コンテナ全削除  
 $ docker rm $(docker ps -aq)  
+
+docker df  
+$ docker system df
+
+build cache削除
+$ docker builder prune  
+  
   
 以上
