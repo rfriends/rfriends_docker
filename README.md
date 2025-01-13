@@ -1,4 +1,3 @@
-2025/01/12現在、修正中  
 rfriends_dockerはdocker環境でrfriends3を動作させるスクリプトです。  
   
 cd ~/  
@@ -14,4 +13,9 @@ http://IPアドレス:8000 にアクセスする。
   
 インストール方法は以下を参照してください。  
 [dockerで「rfriendsでラジオ録音」rfriends3 版](https://github.com/rfriends/rfriends_docker/wiki)   
-また、Docker環境は終了するとデータも消えてしまうのでご注意ください。  
+~~また、Docker環境は終了するとデータも消えてしまうのでご注意ください。 ~~  
+共有ディレクトリに対応したので、録音データは残ります。
+
+ホストはubuntuでしかテストしていません。  
+Windowsホストではうまくいかないと思います
+
