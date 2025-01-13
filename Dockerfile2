@@ -14,6 +14,7 @@ ENV user=user
 ENV uid=1000
 ENV gid=1000
 ENV HOME=/home/$user
+ENV contshare=/tmp/share
 
 RUN apt-get update && apt-get install -y sudo
 RUN groupadd -g $gid $user
@@ -56,9 +57,13 @@ WORKDIR $HOME
 RUN wget ${SITE}/${SCRIPT} && unzip ${SCRIPT}
 
 RUN ln -nfs $HOME/rfriends3/script/html/temp $HOME/rfriends3/script/html/webdav && \ 
-echo lighttpd > rfriends3/rfriends3_boot.txt
-
-RUN mkdir -p lighttpd/uploads
+echo lighttpd > rfriends3/rfriends3_boot.txt && mkdir -p lighttpd/uploads
+mkdir $HOME/tmp
+mkdir -p $contshare/usr2/
+cat <<EOF > $HOME/rfriends3/config/usrdir.ini
+usrdir = "$contshare/usr2/"
+tmpdir = "$HOME/tmp/"
+EOF
 
 RUN sudo lighttpd-enable-mod fastcgi && \ 
 sudo lighttpd-enable-mod fastcgi-php
