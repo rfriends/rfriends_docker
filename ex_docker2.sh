@@ -5,18 +5,21 @@
 #　ホスト： $HOME/share
 #　コンテナ： /tmp/share
 #
-#user=`whoami`
-#HOME=/home/$user
 hostdir=$HOME/share
 contdir=/tmp/share
+contname=rfriends3-2
+imgname=rfriends3-2
 #
 if [ ! -d $hostdir ]; then
   mkdir $hostdir
 fi
+#　コンテナ削除
+docker stop $contname
+docker rm   $contname
 #　コンテナ作成
-docker create --name ex-rfriends3-2 --mount type=bind,src=$hostdir,target=$contdir rfriends3-2
+docker create --name $contname --mount type=bind,src=$hostdir,target=$contdir $imgname
 #　コンテナスタート
-docker start ex-rfriends3-2
+docker start $contname
 #　アタッチ
-docker attach ex-rfriends3-2
+docker attach $contname
 #
