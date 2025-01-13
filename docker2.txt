@@ -9,6 +9,15 @@ Dockerfileと同じ場所にstart.shを置いてください。
 sudoなしで実行できるよう設定してください。
 
 １．イメージ作成
+
+ホストで
+$ id
+uid=1000(user) gid=1000(user)
+を実行し
+Dockerfileのuid,gidを設定してください
+ENV uid=1000
+ENV gid=1000
+
 $ docker build ./ -t rfriends3:latest -f Dockerfile2
 
 ２．実行
