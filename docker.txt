@@ -22,7 +22,7 @@ $ docker build ./ -t rfriends3
 
 ２．実行
 
-  $ sh ex_rfriends.sh
+$ sh ex_rfriends.sh
 
 実行画面に
 172.17.0.2:8000
