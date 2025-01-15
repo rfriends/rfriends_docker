@@ -3,7 +3,7 @@
 # for Dockerfile
 #
 #　ホスト： $HOME/share
-#　コンテナ： /home/$user
+#　コンテナ： /tmp/share
 #
 
 contname=rfriends3
@@ -14,7 +14,7 @@ hostdir=$HOME/share
 
 # コンテナ側の共有ディレクトリ
 user=user
-contdir=/home/$user
+contdir=/tmp/share
 
 # ポートフォワーディング
 # no にすると同一LANからアクセス不可だが複数のコンテナが実行可能
