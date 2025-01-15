@@ -5,10 +5,8 @@ if [ ! -d $contshare/usr2 ]; then
   echo mkdir -p $contshare/usr2
 fi
 #
-echo "port : $port"
-echo $port > $HOME/rfriends3/rfriends3_port
 hn=`hostname -i`:$port
-echo "container address : $hn"
+echo "container IPaddress : $hn"
 echo $hn > $HOME/rfriends3/rfriends3_server.txt
 #
 sudo service cron start
