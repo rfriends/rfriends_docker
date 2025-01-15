@@ -29,9 +29,15 @@ docker rm   $contname
 #　コンテナ実行
 if [ $portfw = "yes" ]; then
   echo "port forwarding = yes"
-  docker run -p 8000:8000 -it --name $contname --mount type=bind,src=$hostshare,target=$contshare $imgname
+  pfw='-p 8000:8000'
 else
   echo "port forwarding = no"
-  docker run -it --name $contname --mount type=bind,src=$hostshare,target=$contshare $imgname
+  pfw=
 fi
+
+docker run $pfw \
+ -it \
+ --name $contname \
+ --mount type=bind,src=$hostshare,target=$contshare \
+ $imgname
 #
