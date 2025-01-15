@@ -65,10 +65,10 @@ RUN ln -nfs $chome/rfriends3/script/html/temp $chome/rfriends3/script/html/webda
   mkdir -p lighttpd/uploads && \
   mkdir $chome/tmp
 
-RUN cat <<EOF > $chome/rfriends3/config/usrdir.ini
-usrdir = "$contshare/usr2/"
-tmpdir = "$chome/tmp/"
-EOF
+#RUN cat <<EOF > $chome/rfriends3/config/usrdir.ini
+#usrdir = "$contshare/usr2/"
+#tmpdir = "$chome/tmp/"
+#EOF
 
 RUN sudo lighttpd-enable-mod fastcgi && \ 
     sudo lighttpd-enable-mod fastcgi-php
