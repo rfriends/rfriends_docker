@@ -15,6 +15,7 @@ ENV user=user
 ENV uid=1000
 ENV gid=1000
 ENV HOME=/home/$user
+ENV port=8000
 
 RUN apt-get update && apt-get install -y sudo
 RUN groupadd -g $gid $user
@@ -47,7 +48,8 @@ RUN apt-get -y install lighttpd lighttpd-mod-webdav php-cgi
 COPY 15-fastcgi-php.conf /etc/lighttpd/conf-available/.
 COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
 RUN sed -i s%rfriendshomedir%$HOME%g /etc/lighttpd/lighttpd.conf && \
-    sed -i s%rfriendsuser%$user%g /etc/lighttpd/lighttpd.conf
+    sed -i s%rfriendsuser%$user%g /etc/lighttpd/lighttpd.conf && \
+    sed -i s%rfriendsport%$port%g /etc/lighttpd/lighttpd.conf
 RUN mkdir -p /var/cache/lighttpd
 
 USER $user
