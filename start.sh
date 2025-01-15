@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-#if [ ! -d $contshare/usr2 ]; then
-#  mkdir -p $contshare/usr2
-#  echo mkdir -p $contshare/usr2
-#fi
+if [ ! -d $contshare/usr2 ]; then
+  mkdir -p $contshare/usr2
+  echo mkdir -p $contshare/usr2
+fi
 #
 hn=`hostname -i`:$port
 echo "container IPaddress : $hn"
