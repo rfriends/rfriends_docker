@@ -5,12 +5,22 @@
 #　ホスト： $HOME/share
 #　コンテナ： /tmp/share
 #
-hostdir=$HOME/share
-contdir=/tmp/share
+
 contname=rfriends3
 imgname=rfriends3
+
+# ホスト側の共有ディレクトリ
+hostdir=$HOME/share
+
+# コンテナ側の共有ディレクトリ
+user=user
+contdir=/tmp/share
+#contdir=/home/$user
+
+# ポートフォワーディング
+# yes にすると同一LANからアクセス可能
 portfw=no
-#
+
 if [ ! -d $hostdir ]; then
   mkdir $hostdir
 fi
@@ -20,16 +30,16 @@ port=8000
 #　コンテナ削除
 docker stop $contname
 docker rm   $contname
+
 #　コンテナ作成
+docker create -it --name $contname --mount type=bind,src=$hostdir,target=$contdir $imgname
+
+#　コンテナスタート
 if [ $portfw = "yes" ]; then
   echo "port forwarding = yes"
-  echo "ホストのIPアドレス:$port でアクセスしてください"
-  docker create -p $port:$port -it --name $contname --mount type=bind,src=$hostdir,target=$contdir $imgname
+  edocker run $port=$port $contname
 else
   echo "port forwarding = no"
-  echo "コンテナのIPアドレス:$port でアクセスしてください"
-  docker create -it --name $contname --mount type=bind,src=$hostdir,target=$contdir $imgname
+  docker run $contname
 fi
-#　コンテナスタート
-docker run $contname
 #
