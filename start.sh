@@ -5,9 +5,14 @@ if [ ! -d $contshare/usr2 ]; then
   echo mkdir -p $contshare/usr2
 fi
 #
+cat <<EOF > $chome/rfriends3/config/usrdir.ini
+usrdir = "$contshare/usr2/"
+tmpdir = "$chome/tmp/"
+EOF
+
 hn=`hostname -i`:$port
 echo "container IPaddress : $hn"
-echo $hn > $HOME/rfriends3/rfriends3_server.txt
+echo $hn > $chome/rfriends3/rfriends3_server.txt
 #
 sudo service cron start
 sudo service atd start
