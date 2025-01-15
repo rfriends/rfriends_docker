@@ -17,8 +17,8 @@ user=user
 contdir=/home/$user
 
 # ポートフォワーディング
-# yes にすると同一LANからアクセス可能
-portfw=no
+# no にすると同一LANからアクセス不可だが複数のコンテナが実行可能
+portfw=yes
 
 if [ ! -d $hostdir ]; then
   mkdir $hostdir
