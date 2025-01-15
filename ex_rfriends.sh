@@ -10,18 +10,18 @@ contname=rfriends3
 imgname=rfriends3
 
 # ホスト側の共有ディレクトリ
-hostdir=$HOME/share
+hostshare=$HOME/share
 
 # コンテナ側の共有ディレクトリ
 user=user
-contdir=/tmp/share
+contshare=/tmp/share
 
 # ポートフォワーディング
 # no にすると同一LANからアクセス不可だが複数のコンテナが実行可能
 portfw=yes
 
-if [ ! -d $hostdir ]; then
-  mkdir $hostdir
+if [ ! -d $hostshare ]; then
+  mkdir -p $hostshare
 fi
 # ポート番号は変更不可
 port=8000
@@ -31,7 +31,7 @@ docker stop $contname
 docker rm   $contname
 
 #　コンテナ作成
-docker create -it --name $contname --mount type=bind,src=$hostdir,target=$contdir $imgname
+docker create -it --name $contname --mount type=bind,src=$hostshare,target=$contshare $imgname
 
 #　コンテナスタート
 if [ $portfw = "yes" ]; then
