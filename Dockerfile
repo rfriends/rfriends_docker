@@ -10,11 +10,14 @@ RUN userdel ubuntu && rm -rf /home/ubuntu
 #
 # user設定（環境に応じて変更）
 # uid,gidはホストの実行ユーザに合わせる
-ENV contshare=/tmp/share
 ENV user=user
 ENV uid=1000
 ENV gid=1000
 ENV HOME=/home/$user
+ENV contshare=/tmp/share
+#ENV contshare=$HOME
+
+# ポート番号は変更不可
 ENV port=8000
 
 RUN apt-get update && apt-get install -y sudo
