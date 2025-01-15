@@ -33,12 +33,12 @@ docker rm   $contname
 #　コンテナ作成
 docker create -it --name $contname --mount type=bind,src=$hostshare,target=$contshare $imgname
 
-#　コンテナスタート
+#　コンテナ実行
 if [ $portfw = "yes" ]; then
   echo "port forwarding = yes"
-  edocker run $port=$port $contname
+  docker run 8000:8000 -it --name $contname --mount type=bind,src=$hostshare,target=$contshare $imgname
 else
   echo "port forwarding = no"
-  docker run $contname
+  docker run -it --name $contname --mount type=bind,src=$hostshare,target=$contshare $imgname
 fi
 #
