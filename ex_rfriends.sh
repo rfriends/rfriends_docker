@@ -30,13 +30,10 @@ port=8000
 docker stop $contname
 docker rm   $contname
 
-#　コンテナ作成
-docker create -it --name $contname --mount type=bind,src=$hostshare,target=$contshare $imgname
-
 #　コンテナ実行
 if [ $portfw = "yes" ]; then
   echo "port forwarding = yes"
-  docker run 8000:8000 -it --name $contname --mount type=bind,src=$hostshare,target=$contshare $imgname
+  docker run -p 8000:8000 -it --name $contname --mount type=bind,src=$hostshare,target=$contshare $imgname
 else
   echo "port forwarding = no"
   docker run -it --name $contname --mount type=bind,src=$hostshare,target=$contshare $imgname
