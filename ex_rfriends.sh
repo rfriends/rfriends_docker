@@ -9,6 +9,7 @@ hostdir=$HOME/share
 contdir=/tmp/share
 contname=rfriends3
 imgname=rfriends3
+port=8000
 #
 if [ ! -d $hostdir ]; then
   mkdir $hostdir
@@ -17,7 +18,7 @@ fi
 docker stop $contname
 docker rm   $contname
 #　コンテナ作成
-docker create -p 8000:8000 -it --name $contname --mount type=bind,src=$hostdir,target=$contdir $imgname
+docker create -p $port:$port -it --name $contname --mount type=bind,src=$hostdir,target=$contdir $imgname
 #　コンテナスタート
 docker run $contname
 #
