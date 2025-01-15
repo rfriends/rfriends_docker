@@ -10,7 +10,7 @@ hostshare=$HOME/share
 
 # コンテナ側の共有ディレクトリ
 user=user
-contshare=/home/$user/rfriends3
+contshare=/tmp/share
 
 # ポートフォワーディング
 # no にすると同一LANからアクセス不可だが複数のコンテナが実行可能
