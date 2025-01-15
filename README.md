@@ -8,7 +8,7 @@ $ sudo apt-get -y install git
 $ rm -rf rfriends_docker  
 $ git clone https://github.com/rfriends/rfriends_docker.git  
 $ cd rfriends_docker  
-$ docker build -t rfriends3  
+$ docker build ./ -t rfriends3  
 $ sh ex_rfriends.sh  
   
 ホストはubuntuでしかテストしていません。  
