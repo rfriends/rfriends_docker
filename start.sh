@@ -15,6 +15,6 @@ sudo service atd start
 # lighttpd
 sudo service lighttpd start
 # don't exit
-#while :; do sleep 10; done
+while :; do sleep 10; done
 #
 echo server exit
