@@ -33,6 +33,17 @@ smbport=445
 pfw='-p 8000:8000'
 smbfw='-p 445:445'
 
+echo
+echo "[ホスト共有]"
+echo "ユーザ : $hostuser"
+echo "共有１ : $hostshare1"
+echo "共有２ : $hostshare2"
+echo 
+echo "[コンテナ共有]"
+echo "ユーザ : $contuser"
+echo "共有１ : $contshare1"
+echo "共有２ : $contshare2"
+echo 
 
 #　コンテナ削除
 docker stop $contname
