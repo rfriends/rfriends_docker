@@ -14,7 +14,8 @@ ENV user=user
 ENV uid=1000
 ENV gid=1000
 ENV chome=/home/$user
-ENV contshare=/tmp/share
+ENV contshare1=$chome/usr2
+ENV contshare2=$chome/rfriends3/config
 
 # ポート番号は変更不可
 ENV port=8000
@@ -67,7 +68,7 @@ RUN ln -nfs $chome/rfriends3/script/html/temp $chome/rfriends3/script/html/webda
   mkdir $chome/tmp
 
 RUN cat <<EOF > $chome/rfriends3/config/usrdir.ini
-usrdir = "$contshare/usr2/"
+usrdir = "$contshare1"
 tmpdir = "$chome/tmp/"
 EOF
 
