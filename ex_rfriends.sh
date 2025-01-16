@@ -33,6 +33,8 @@ docker rm   $contname
 #　コンテナ実行
 if [ $portfw = "yes" ]; then
   echo "port forwarding = yes"
+  host=`hostname -I"
+  echo "host IPaddress : $host"
   pfw='-p 8000:8000'
 else
   echo "port forwarding = no"
