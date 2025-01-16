@@ -31,7 +31,7 @@ port=8000
 smbport=445
 
 pfw='-p 8000:8000'
-smbfw= '-p 445:445'
+smbfw='-p 445:445'
 
 
 #　コンテナ削除
@@ -48,7 +48,7 @@ else
   pfw=
 fi
 
-docker run $pfw $smbfw\
+docker run $pfw $smbfw \
  -it \
  --name $contname \
  --mount type=bind,src=$hostshare1,target=$contshare1 \
