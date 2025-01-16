@@ -37,7 +37,11 @@ $HOME/share/usr2 以下に録音データが保存されており、このデー
 ４．その他  
   
 コマンド覚書  
-  
+
+shell アクセス
+docker ps
+docker exec -it containerID /bin/bash
+
 イメージ削除  
 docker images  
 docker rmi rfriends3  
