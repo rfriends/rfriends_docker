@@ -35,40 +35,20 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-# rfriends3 
-ENV SITE=https://github.com/rfriends/rfriends3/releases/latest/download
-ENV SCRIPT=rfriends3_latest_script.zip
-ENV BASE=/home/$user/rfriends3
-
-# rfriends用アプリのインストール
-RUN apt-get -y install \
-unzip nano vim dnsutils iproute2 tzdata \
-at cron wget curl atomicparsley \
-php-cli php-xml php-zip php-mbstring php-json php-curl php-intl \
-ffmpeg
-
-# lighttpd
-RUN apt-get -y install lighttpd lighttpd-mod-webdav php-cgi
-COPY 15-fastcgi-php.conf /etc/lighttpd/conf-available/.
-COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
-RUN sed -i s%rfriendshomedir%/home/$user%g /etc/lighttpd/lighttpd.conf && \
-    sed -i s%rfriendsuser%$user%g /etc/lighttpd/lighttpd.conf && \
-    sed -i s%rfriendsport%$port%g /etc/lighttpd/lighttpd.conf
-RUN mkdir -p /var/cache/lighttpd
-
 USER $user
 WORKDIR /home/$user
 
-# rfriends3のインストール
-RUN wget ${SITE}/${SCRIPT} && unzip ${SCRIPT}
+RUN rm -rf rfriends_ubuntu
+RUN sudo apt-get install git -y  
+RUN git clone https://github.com/rfriends/rfriends_ubuntu.git && \
+  if [ $? != 0 ]; then \
+    echo クローンに失敗しました。 \
+    echo 少し時間をおいて再度実行してください。 \
+    exit 1 \
+  fi
 
-RUN ln -nfs $BASE/script/html/temp $BASE/script/html/webdav && \ 
-  echo lighttpd > $BASE/rfriends3_boot.txt && \
-  mkdir -p /home/$user/lighttpd/uploads && \
-  mkdir /home/$user/tmp
-
-RUN sudo lighttpd-enable-mod fastcgi && \ 
-    sudo lighttpd-enable-mod fastcgi-php
+RUN　cd rfriends_ubuntu && \  
+     sh rfriends_ubuntu.sh  
 
 COPY start.sh .
 
