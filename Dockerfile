@@ -16,10 +16,6 @@ ENV uid=1000
 ENV gid=1000
 
 ENV chome=/home/$user
-# 録音データ
-ENV contshare1=$chome/usr2
-# 設定データ
-ENV contshare2=$chome/rfriends3/config
 
 # ポート番号は変更不可
 ENV port=8000
@@ -71,12 +67,6 @@ RUN ln -nfs $chome/rfriends3/script/html/temp $chome/rfriends3/script/html/webda
   echo lighttpd > rfriends3/rfriends3_boot.txt && \
   mkdir -p lighttpd/uploads && \
   mkdir $chome/tmp
-
-# 実行時に無効になるので不要
-#RUN cat <<EOF > $contshare2/usrdir.ini
-#usrdir = "$contshare1"
-#tmpdir = "$chome/tmp/"
-#EOF
 
 RUN sudo lighttpd-enable-mod fastcgi && \ 
     sudo lighttpd-enable-mod fastcgi-php
