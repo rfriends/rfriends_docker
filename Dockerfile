@@ -38,6 +38,7 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 # rfriends3 
 ENV SITE=https://github.com/rfriends/rfriends3/releases/latest/download
 ENV SCRIPT=rfriends3_latest_script.zip
+ENV BASE=/home/$user/rfriends3
 
 # rfriends用アプリのインストール
 RUN apt-get -y install \
@@ -61,9 +62,9 @@ WORKDIR /home/$user
 # rfriends3のインストール
 RUN wget ${SITE}/${SCRIPT} && unzip ${SCRIPT}
 
-RUN ln -nfs rfriends3/script/html/temp rfriends3/script/html/webdav && \ 
-  echo lighttpd > rfriends3/rfriends3_boot.txt && \
-  mkdir -p lighttpd/uploads && \
+RUN ln -nfs $BASE/script/html/temp $BASE/script/html/webdav && \ 
+  echo lighttpd > $BASE/rfriends3_boot.txt && \
+  mkdir -p $BASE/lighttpd/uploads && \
   mkdir /home/$user/tmp
 
 RUN sudo lighttpd-enable-mod fastcgi && \ 
