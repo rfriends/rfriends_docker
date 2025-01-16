@@ -64,7 +64,7 @@ RUN wget ${SITE}/${SCRIPT} && unzip ${SCRIPT}
 
 RUN ln -nfs $BASE/script/html/temp $BASE/script/html/webdav && \ 
   echo lighttpd > $BASE/rfriends3_boot.txt && \
-  mkdir -p $BASE/lighttpd/uploads && \
+  mkdir -p /home/$user/lighttpd/uploads && \
   mkdir /home/$user/tmp
 
 RUN sudo lighttpd-enable-mod fastcgi && \ 
