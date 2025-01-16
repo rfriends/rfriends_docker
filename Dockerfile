@@ -15,8 +15,6 @@ ENV user=user
 ENV uid=1000
 ENV gid=1000
 
-ENV chome=/home/$user
-
 # ポート番号は変更不可
 ENV port=8000
 EXPOSE $port
