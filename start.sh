@@ -5,7 +5,7 @@ if [ ! -d $contshare1 ]; then
   echo mkdir -p $contshare1
 fi
 #
-cat <<EOF > $chome/rfriends3/config/usrdir.ini
+cat <<EOF > $contshare2/usrdir.ini
 usrdir = "$contshare1"
 tmpdir = "$chome/tmp/"
 EOF
