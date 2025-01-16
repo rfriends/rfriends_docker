@@ -27,11 +27,7 @@ sudo service smbd start
 
 echo
 echo "container IPaddress : $hn"
-
-echo
-echo "container date"
 date
-echo
 
 # don't exit
 while true; do sleep 10; done
