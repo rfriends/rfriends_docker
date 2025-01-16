@@ -1,12 +1,12 @@
 #!/bin/bash
 #
-if [ ! -d $contshare/usr2 ]; then
-  mkdir -p $contshare/usr2
-  echo mkdir -p $contshare/usr2
+if [ ! -d $contshare1 ]; then
+  mkdir -p $contshare1
+  echo mkdir -p $contshare1
 fi
 #
 cat <<EOF > $chome/rfriends3/config/usrdir.ini
-usrdir = "$contshare/usr2/"
+usrdir = "$contshare1"
 tmpdir = "$chome/tmp/"
 EOF
 
