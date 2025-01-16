@@ -18,6 +18,7 @@ ENV contshare=/tmp/share
 
 # ポート番号は変更不可
 ENV port=8000
+EXPOSE $port
 
 RUN apt-get update && apt-get install -y sudo
 RUN groupadd -g $gid $user
