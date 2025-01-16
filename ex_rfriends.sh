@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # for Dockerfile
 #
@@ -7,12 +7,12 @@ imgname=rfriends3
 
 # ホスト側の共有ディレクトリ
 hostuser=`whoami`
-hostshare1=/home/$hostuser/share/usr2
+hostshare1=/home/$hostuser/share/smbdir/usr2
 hostshare2=/home/$hostuser/share/rfriends3/config
 
 # コンテナ側の共有ディレクトリ
 contuser=user
-contshare1=/tmp/share/usr2
+contshare1=/home/$contuser/smbdir/usr2
 contshare2=/home/$contuser/rfriends3/config
 
 if [ ! -d $hostshare1 ]; then
@@ -28,6 +28,22 @@ portfw=yes
 
 # ポート番号は変更不可
 port=8000
+smbport=445
+
+pfw='-p 8000:8000'
+smbfw='-p 445:445'
+
+echo
+echo "[ホスト共有]"
+echo "ユーザ : $hostuser"
+echo "共有１ : $hostshare1"
+echo "共有２ : $hostshare2"
+echo 
+echo "[コンテナ共有]"
+echo "ユーザ : $contuser"
+echo "共有１ : $contshare1"
+echo "共有２ : $contshare2"
+echo 
 
 #　コンテナ削除
 docker stop $contname
@@ -38,13 +54,12 @@ if [ $portfw = "yes" ]; then
   echo "port forwarding = yes"
   host=`hostname -I`
   echo "host IPaddress : $host"
-  pfw='-p 8000:8000'
 else
   echo "port forwarding = no"
   pfw=
 fi
 
-docker run $pfw \
+docker run $pfw $smbfw \
  -it \
  --name $contname \
  --mount type=bind,src=$hostshare1,target=$contshare1 \

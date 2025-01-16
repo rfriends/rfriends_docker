@@ -1,6 +1,7 @@
+
 #!/bin/bash
 #
-contshare1=/tmp/share/usr2
+contshare1=/home/$user/smbdir/usr2
 contshare2=/home/$user/rfriends3/config
 #
 if [ ! -d $contshare1 ]; then
@@ -21,8 +22,16 @@ sudo service atd start
 # lighttpd web server
 sudo service lighttpd start
 
+# samba server
+sudo service smbd start
+
 echo
 echo "container IPaddress : $hn"
+
+echo
+echo "container date"
+date
+echo
 
 # don't exit
 while true; do sleep 10; done
