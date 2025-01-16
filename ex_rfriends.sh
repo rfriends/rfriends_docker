@@ -44,18 +44,6 @@ else
   pfw=
 fi
 
-echo
-echo "[ホスト共有]"
-echo "ユーザ : $hostuser"
-echo "共有１ : $hostshare1"
-echo "共有２ : $hostshare2"
-echo 
-echo "[コンテナ共有]"
-echo "ユーザ : $contuser"
-echo "共有１ : $contshare1"
-echo "共有２ : $contshare2"
-echo 
-
 docker run $pfw \
  -it \
  --name $contname \
