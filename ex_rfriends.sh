@@ -6,8 +6,9 @@ contname=rfriends3
 imgname=rfriends3
 
 # ホスト側の共有ディレクトリ
-hostshare1=$HOME/share/usr2
-hostshare2=$HOME/share/rfriends3/config
+hostuser=`whoami`
+hostshare1=/home/$hostuser/share/usr2
+hostshare2=/home/$hostuser/share/rfriends3/config
 
 # コンテナ側の共有ディレクトリ
 user=user
