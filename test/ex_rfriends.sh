@@ -7,12 +7,12 @@ imgname=rfriends3
 
 # ホスト側の共有ディレクトリ
 hostuser=`whoami`
-hostshare1=/home/$hostuser/share/usr2
+hostshare1=/home/$hostuser/share/smbdir/usr2
 hostshare2=/home/$hostuser/share/rfriends3/config
 
 # コンテナ側の共有ディレクトリ
 contuser=user
-contshare1=/tmp/share/usr2
+contshare1=/home/$contuser/smbdir/usr2
 contshare2=/home/$contuser/rfriends3/config
 
 if [ ! -d $hostshare1 ]; then
@@ -34,6 +34,7 @@ docker stop $contname
 docker rm   $contname
 
 #　コンテナ実行
+smbfw='-p 445:445'
 if [ $portfw = "yes" ]; then
   echo "port forwarding = yes"
   host=`hostname -I`
@@ -44,7 +45,7 @@ else
   pfw=
 fi
 
-docker run $pfw \
+docker run $pfw $smbfw \
  -it \
  --name $contname \
  --mount type=bind,src=$hostshare1,target=$contshare1 \
