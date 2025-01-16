@@ -11,17 +11,18 @@ hostshare1=/home/$hostuser/share/usr2
 hostshare2=/home/$hostuser/share/rfriends3/config
 
 # コンテナ側の共有ディレクトリ
-user=user
+contuser=user
 contshare1=/tmp/share/usr2
-contshare2=/home/$user/rfriends3/config
+contshare2=/home/$contuser/rfriends3/config
+
+if [ ! -d $hostshare1 ]; then
+  mkdir -p $hostshare1
+fi
 
 # ポートフォワーディング
 # no にすると同一LANからアクセス不可だが複数のコンテナが実行可能
 portfw=yes
 
-if [ ! -d $hostshare1 ]; then
-  mkdir -p $hostshare1
-fi
 # ポート番号は変更不可
 port=8000
 
