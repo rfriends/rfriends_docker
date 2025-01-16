@@ -24,14 +24,17 @@ fi
 
 # ポートフォワーディング
 # no にすると同一LANからアクセス不可だが複数のコンテナが実行可能
-portfw=yes
+httpfw=yes
+smbfw=yes
 
 # ポート番号は変更不可
-port=8000
+httpport=8000
 smbport=445
 
-pfw='-p 8000:8000'
-smbfw='-p 445:445'
+phttp='-p 8000:8000'
+psmb='-p 445:445'
+
+host=`hostname -I`
 
 echo
 echo "[ホスト共有]"
@@ -45,21 +48,24 @@ echo "共有１ : $contshare1"
 echo "共有２ : $contshare2"
 echo 
 
+echo "host IPaddress : $host"
+echo "http port forwarding = $httpfw $phttp" 
+echo "samba port forwarding = $smbfw $psmb" 
+echo
+
 #　コンテナ削除
 docker stop $contname
 docker rm   $contname
 
 #　コンテナ実行
-if [ $portfw = "yes" ]; then
-  echo "port forwarding = yes"
-  host=`hostname -I`
-  echo "host IPaddress : $host"
-else
-  echo "port forwarding = no"
-  pfw=
+if [ $httpfw != "yes" ]; then
+  phttp=
+fi
+if [ $smbfw != "yes" ]; then
+  psmb=
 fi
 
-docker run $pfw $smbfw \
+docker run $phttp $psmb \
  -it \
  --name $contname \
  --mount type=bind,src=$hostshare1,target=$contshare1 \
