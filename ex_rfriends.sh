@@ -18,6 +18,9 @@ contshare2=/home/$contuser/rfriends3/config
 if [ ! -d $hostshare1 ]; then
   mkdir -p $hostshare1
 fi
+if [ ! -d $hostshare2 ]; then
+  mkdir -p $hostshare2
+fi
 
 # ポートフォワーディング
 # no にすると同一LANからアクセス不可だが複数のコンテナが実行可能
@@ -33,7 +36,7 @@ docker rm   $contname
 #　コンテナ実行
 if [ $portfw = "yes" ]; then
   echo "port forwarding = yes"
-  host=`hostname -I"
+  host=`hostname -I`
   echo "host IPaddress : $host"
   pfw='-p 8000:8000'
 else
