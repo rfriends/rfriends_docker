@@ -18,8 +18,8 @@ contshare2=/home/$user/rfriends3/config
 # no にすると同一LANからアクセス不可だが複数のコンテナが実行可能
 portfw=yes
 
-if [ ! -d $hostshare ]; then
-  mkdir -p $hostshare
+if [ ! -d $hostshare1 ]; then
+  mkdir -p $hostshare1
 fi
 # ポート番号は変更不可
 port=8000
@@ -40,6 +40,7 @@ fi
 docker run $pfw \
  -it \
  --name $contname \
- --mount type=bind,src=$hostshare,target=$contshare \
+ --mount type=bind,src=$hostshare1,target=$contshare1 \
+ --mount type=bind,src=$hostshare2,target=$contshare2 \
  $imgname
 #
