@@ -3,7 +3,7 @@
 # 2023/07/29 20.04 -> 22.04
 # 2025/01/10 24.04
 # 2025/01/12 lighttpd
-# 2025/01/13 user
+# 2025/01/16 fix
 #
 FROM ubuntu:24.04
 RUN userdel ubuntu && rm -rf /home/ubuntu
@@ -67,10 +67,11 @@ RUN ln -nfs $chome/rfriends3/script/html/temp $chome/rfriends3/script/html/webda
   mkdir -p lighttpd/uploads && \
   mkdir $chome/tmp
 
-RUN cat <<EOF > $chome/rfriends3/config/usrdir.ini
-usrdir = "$contshare1"
-tmpdir = "$chome/tmp/"
-EOF
+# 実行時に無効になるので不要
+#RUN cat <<EOF > $contshare2/usrdir.ini
+#usrdir = "$contshare1"
+#tmpdir = "$chome/tmp/"
+#EOF
 
 RUN sudo lighttpd-enable-mod fastcgi && \ 
     sudo lighttpd-enable-mod fastcgi-php
