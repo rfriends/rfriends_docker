@@ -6,11 +6,13 @@ contname=rfriends3
 imgname=rfriends3
 
 # ホスト側の共有ディレクトリ
-hostshare=$HOME/share
+hostshare1=$HOME/share/usr2
+hostshare2=$HOME/share/rfriends3/config
 
 # コンテナ側の共有ディレクトリ
 user=user
-contshare=/tmp/share
+contshare1=/tmp/share/usr2
+contshare2=/home/$user/rfriends3/config
 
 # ポートフォワーディング
 # no にすると同一LANからアクセス不可だが複数のコンテナが実行可能
