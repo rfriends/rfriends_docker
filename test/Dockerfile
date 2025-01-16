@@ -62,8 +62,8 @@ RUN mkdir -p /var/log/samba
 RUN chown root:adm /var/log/samba
 
 COPY smb.conf /etc/samba/smb.conf 
-RUN sed -i s%rfriendshomedir%/home/$user%g /etc/smb.conf && \
-    sed -i s%rfriendsuser%$user%g /etc/smb.conf && \
+RUN sed -i s%rfriendshomedir%/home/$user%g /etc/samba/smb.conf && \
+    sed -i s%rfriendsuser%$user%g /etc/samba/smb.conf && \
     chown root:root /etc/samba/smb.conf
 
 RUN mkdir -p /home/$user/smbdir/usr2/
