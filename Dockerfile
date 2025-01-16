@@ -58,15 +58,15 @@ RUN sed -i s%rfriendshomedir%$chome%g /etc/lighttpd/lighttpd.conf && \
 RUN mkdir -p /var/cache/lighttpd
 
 USER $user
-WORKDIR $chome
+WORKDIR /home/$user
 
 # rfriends3のインストール
 RUN wget ${SITE}/${SCRIPT} && unzip ${SCRIPT}
 
-RUN ln -nfs $chome/rfriends3/script/html/temp $chome/rfriends3/script/html/webdav && \ 
+RUN ln -nfs rfriends3/script/html/temp rfriends3/script/html/webdav && \ 
   echo lighttpd > rfriends3/rfriends3_boot.txt && \
   mkdir -p lighttpd/uploads && \
-  mkdir $chome/tmp
+  mkdir /home/$user/tmp
 
 RUN sudo lighttpd-enable-mod fastcgi && \ 
     sudo lighttpd-enable-mod fastcgi-php
