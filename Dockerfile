@@ -6,6 +6,7 @@
 # 2025/01/16 fix
 #
 FROM ubuntu:24.04
+# 24.04で最初から存在するubuntuユーザを削除
 RUN userdel ubuntu && rm -rf /home/ubuntu
 #
 # user設定（環境に応じて変更）
@@ -13,8 +14,11 @@ RUN userdel ubuntu && rm -rf /home/ubuntu
 ENV user=user
 ENV uid=1000
 ENV gid=1000
+
 ENV chome=/home/$user
+# 録音データ
 ENV contshare1=$chome/usr2
+# 設定データ
 ENV contshare2=$chome/rfriends3/config
 
 # ポート番号は変更不可
@@ -22,6 +26,7 @@ ENV port=8000
 EXPOSE $port
 
 RUN apt-get update && apt-get install -y sudo
+# $userを追加し、sudo,NOPASSWD
 RUN groupadd -g $gid $user
 RUN useradd -m -s /bin/bash -u $uid -g $gid -G sudo $user
 RUN echo $user:$user | chpasswd
@@ -31,7 +36,7 @@ RUN echo "$user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 ENV LANG=C.UTF-8
 ENV LANGUAGE=en_US
 
-# タイムゾーン設定
+# タイムゾーン(JST)設定
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
