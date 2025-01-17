@@ -30,6 +30,10 @@ echo
 echo "container IPaddress : $hn"
 date
 
+recoverysw="on"
+
+if [ $recoverysw = "on" ]; then
+
 echo
 echo ----- recovery start
 echo
@@ -67,6 +71,8 @@ echo デイリー処理を終了しました
 echo
 echo ----- recovery end
 echo
+
+fi
 
 # don't exit
 while true; do sleep 10; done
