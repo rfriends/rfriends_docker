@@ -58,6 +58,7 @@ opt="1,1,1,1,1,1,1"
 #
 fl="$rfriends3dir/script/ex_rfriends.sh"
 echo デイリー処理を開始しました
+echo 終了までしばらくお待ちください
 sh $fl 0 $opt 
 echo デイリー処理を終了しました
 
