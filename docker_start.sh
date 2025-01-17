@@ -63,10 +63,9 @@ echo "/home/$user/tmp/" > $rfriends3dir/etc/tmpdef
 opt="1,1,0,0,0,0,0"
 #
 fl="$rfriends3dir/script/ex_rfriends.sh"
-echo デイリー処理を開始しました
 sh $fl 0 $opt > /dev/null &
-echo バックグラウンドで処理中です
-echo Webアクセスが可能になりました
+echo デイリー処理をバックグラウンドで処理中です
+echo Webアクセスはすでに可能になっています
 echo
 echo ----- recovery end
 echo
