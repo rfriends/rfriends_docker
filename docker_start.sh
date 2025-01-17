@@ -36,8 +36,14 @@ echo
 
 # recovery crontab
 if [ -f $contshare2/crontab.conf ]; then
+  mv -f $contshare2/crontab.conf $contshare2/crontab.conf.bak
+fi
+sh crontab -u $user -l > $contshare2/crontab.conf
+if [ $? = 0 ]; then
    crontab -u $user $contshare2/crontab.conf
    echo "crontabを復元しました。"
+else
+   rm -f $contshare2/crontab.conf 
 fi
 
 # def
