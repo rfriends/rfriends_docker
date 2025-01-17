@@ -39,7 +39,8 @@ hn=`hostname`
 
 echo
 echo "[ホスト共有]"
-echo "ホスト : $hostuser"
+echo "ホスト : $hn"
+echo "IPaddr : $host"
 echo "ユーザ : $hostuser"
 echo "共有１ : $hostshare1"
 echo "共有２ : $hostshare2"
@@ -50,7 +51,6 @@ echo "共有１ : $contshare1"
 echo "共有２ : $contshare2"
 echo 
 
-echo "host($hn) : $host"
 echo "http port forwarding = $httpfw $phttp" 
 echo "samba port forwarding = $smbfw $psmb" 
 echo
