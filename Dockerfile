@@ -83,6 +83,7 @@ RUN sudo lighttpd-enable-mod fastcgi && \
     sudo lighttpd-enable-mod fastcgi-php
 
 COPY docker_start.sh .
+COPY docker_recovery.sh .
 
 # rfriends3_server.txt 作成,server start
 ENTRYPOINT ["sh","./docker_start.sh"]
