@@ -11,7 +11,6 @@ $ docker build ./ -t rfriends3
 $ sh rfriends_docker.sh  
   
 ホストはubuntuでしかテストしていません。  
-Windowsホストでは一部修正が必要だと思います。  
   
 詳細なインストール方法は以下を参照してください。  
 [dockerで「rfriendsでラジオ録音」rfriends3 版](https://github.com/rfriends/rfriends_docker/wiki)   
