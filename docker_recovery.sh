@@ -1,6 +1,11 @@
-echo
-echo ----- recovery start
-echo
+#!/bin/bash
+#
+# このshは単独では動作しません。
+#
+# crontab
+# usrdef,tmpdef
+# daily process
+#
 
 # recovery crontab
 if [ -f $contshare2/crontab.conf ]; then
@@ -29,6 +34,4 @@ echo デイリー処理を開始しました
 sh $fl 0 $opt 
 echo デイリー処理を終了しました
 
-echo
-echo ----- recovery end
-echo
+exit 0
