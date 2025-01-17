@@ -14,8 +14,9 @@ EOF
 
 rfriends3dir=/home/$user/rfriends3
 
-hn=`hostname -i`:$port
-echo $hn > $rfriends3dir/rfriends3_server.txt
+host=`hostname -i`
+hn=`hostname`
+echo ${host}:${port} > $rfriends3dir/rfriends3_server.txt
 #
 sudo service cron start
 sudo service atd start
@@ -27,7 +28,7 @@ sudo service lighttpd start
 sudo service smbd start
 
 echo
-echo "container IPaddress : $hn"
+echo "container IPaddress : $host"
 date
 
 recoverysw="on"
