@@ -85,5 +85,5 @@ RUN sudo lighttpd-enable-mod fastcgi && \
 COPY start.sh .
 
 # rfriends3_server.txt 作成,server start
-ENTRYPOINT ["sh","./start.sh"]
+ENTRYPOINT ["sh","./docker_start.sh"]
 CMD ["/bin/bash"]
