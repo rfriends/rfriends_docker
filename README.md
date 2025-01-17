@@ -8,7 +8,7 @@ $ rm -rf rfriends_docker
 $ git clone https://github.com/rfriends/rfriends_docker.git  
 $ cd rfriends_docker  
 $ docker build ./ -t rfriends3  
-$ sh ex_rfriends.sh  
+$ sh rfriends_docker.sh  
   
 ホストはubuntuでしかテストしていません。  
 Windowsホストでは一部修正が必要だと思います。  
