@@ -35,9 +35,11 @@ phttp='-p 8000:8000'
 psmb='-p 445:445'
 
 host=`hostname -I`
+hn=`hostname`
 
 echo
 echo "[ホスト共有]"
+echo "ホスト : $hostuser"
 echo "ユーザ : $hostuser"
 echo "共有１ : $hostshare1"
 echo "共有２ : $hostshare2"
@@ -48,7 +50,7 @@ echo "共有１ : $contshare1"
 echo "共有２ : $contshare2"
 echo 
 
-echo "host IPaddress : $host"
+echo "host($hn) : $host"
 echo "http port forwarding = $httpfw $phttp" 
 echo "samba port forwarding = $smbfw $psmb" 
 echo
