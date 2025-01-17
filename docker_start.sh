@@ -39,11 +39,11 @@ echo ----- recovery start
 echo
 
 # recovery crontab
-if [ -f $contshare2/crontab.conf]; then
+if [ -f $contshare2/crontab.conf ]; then
    crontab -u $user $contshare2/crontab.conf
-   echo "crontabを復元しました。"
+   echo "crontab.confを復元しました。"
 else
-   echo "crontabファイルがありません。"
+   echo "crontab.confファイルがありません。"
 fi
 
 # def
