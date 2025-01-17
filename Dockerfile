@@ -82,7 +82,7 @@ RUN ln -nfs $BASE/script/html/temp $BASE/script/html/webdav && \
 RUN sudo lighttpd-enable-mod fastcgi && \ 
     sudo lighttpd-enable-mod fastcgi-php
 
-COPY start.sh .
+COPY docker_start.sh .
 
 # rfriends3_server.txt 作成,server start
 ENTRYPOINT ["sh","./docker_start.sh"]
