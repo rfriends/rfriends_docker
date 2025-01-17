@@ -60,7 +60,7 @@ echo "/home/$user/tmp/" > $rfriends3dir/etc/tmpdef
 # らじるゴガク録音
 # ポッドキャスト
 # クリーン処理
-opt="1,1,1,1,1,1,1"
+opt="1,1,0,0,0,0,0"
 #
 fl="$rfriends3dir/script/ex_rfriends.sh"
 echo デイリー処理を開始しました
