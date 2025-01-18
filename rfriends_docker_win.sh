@@ -15,6 +15,9 @@ smbfw=no
 phttp='-p 8000:8000'
 psmb='-p 445:445'
 # --------------------------------------------------------
+# イメージ作成
+docker build ./ -t $imgname
+#
 export $contname
 export $imgname
 export $httpfw
