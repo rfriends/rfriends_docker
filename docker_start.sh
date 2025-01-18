@@ -77,3 +77,4 @@ fi
 while true; do sleep 10; done
 #
 echo server exit
+exit 0
