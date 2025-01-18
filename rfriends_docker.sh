@@ -32,5 +32,5 @@ export hostip
 sh run_contena.sh
 #
 echo
-echo exit run_contena.sh
+echo exit rfriends_docker.sh
 exit 0
