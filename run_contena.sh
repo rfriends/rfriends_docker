@@ -28,8 +28,6 @@ if [ $smbfw != "yes" ]; then
   psmb=
 fi
 
-hostip=`hostname -I`
-
 echo
 echo "[ホスト共有]"
 echo "ユーザ  : $hostuser"
