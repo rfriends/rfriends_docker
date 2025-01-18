@@ -19,9 +19,9 @@ psmb='-p 445:445'
 # --------------------------------------------------------
 # ホスト側の共有ディレクトリ
 hostuser=`whoami`
-cdir=`pwd`../share
-hostshare1=$cdir/smbdir/usr2
-hostshare2=$cdir/rfriends3/config
+cdir=`dirname $(pwd)`
+hostshare1=$cdir/share/smbdir/usr2
+hostshare2=$cdir/share/rfriends3/config
 
 # コンテナ側の共有ディレクトリ
 contuser=user
@@ -47,9 +47,8 @@ hostip=`hostname -I`
 
 echo
 echo "[ホスト共有]"
-echo "ホスト : $hostuser"
+echo "ユーザ  : $hostuser"
 echo "IPaddr : $hostip"
-echo "ユーザ : $hostuser"
 echo "共有１ : $hostshare1"
 echo "共有２ : $hostshare2"
 echo 
