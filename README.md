@@ -13,7 +13,7 @@ docker desktop(windows)の場合
 $ sh rfriends_docker_win.sh  
   
 docker desktop(macOS)の場合  
-$ sh rfriends_docker_win.sh  
+$ sh rfriends_docker_mac.sh  
   
 詳細なインストール方法は以下を参照してください。  
 [dockerで「rfriendsでラジオ録音」rfriends3 版](https://github.com/rfriends/rfriends_docker/wiki)   
