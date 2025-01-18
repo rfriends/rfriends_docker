@@ -47,7 +47,7 @@ hostip=`hostname -I`
 
 echo
 echo "[ホスト共有]"
-echo "ホスト : $hnostuser"
+echo "ホスト : $hostuser"
 echo "IPaddr : $hostip"
 echo "ユーザ : $hostuser"
 echo "共有１ : $hostshare1"
