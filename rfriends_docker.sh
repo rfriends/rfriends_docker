@@ -7,8 +7,9 @@ imgname=rfriends3
 
 # ホスト側の共有ディレクトリ
 hostuser=`whoami`
-hostshare1=/home/$hostuser/share/smbdir/usr2
-hostshare2=/home/$hostuser/share/rfriends3/config
+cdir=`pwd`
+hostshare1=$cdir/share/smbdir/usr2
+hostshare2=$cdir/share/rfriends3/config
 
 # コンテナ側の共有ディレクトリ
 contuser=user
