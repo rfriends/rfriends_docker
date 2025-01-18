@@ -18,6 +18,7 @@ psmb='-p 445:445'
 hostip=
 # --------------------------------------------------------
 # イメージ作成
+sudo chmod 666 /var/run/docker.sock
 docker build ./ -t $imgname
 #
 export contname
