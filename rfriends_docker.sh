@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# コンテナ実行
+# コンテナ実行 for linux
 # --------------------------------------------------------
 # コンテナとイメージ
 contname=rfriends3
@@ -15,60 +15,23 @@ smbfw=yes
 phttp='-p 8000:8000'
 psmb='-p 445:445'
 
-# --------------------------------------------------------
-# ホスト側の共有ディレクトリ
-hostuser=`whoami`
-cdir=`dirname $(pwd)`
-hostshare1=$cdir/share/smbdir/usr2
-hostshare2=$cdir/share/rfriends3/config
-
-# コンテナ側の共有ディレクトリ
-contuser=user
-contshare1=/home/$contuser/smbdir/usr2
-contshare2=/home/$contuser/rfriends3/config
-
-if [ ! -d $hostshare1 ]; then
-  mkdir -p $hostshare1
-fi
-if [ ! -d $hostshare2 ]; then
-  mkdir -p $hostshare2
-fi
-
-#　
-if [ $httpfw != "yes" ]; then
-  phttp=
-fi
-if [ $smbfw != "yes" ]; then
-  psmb=
-fi
-
 hostip=`hostname -I`
-
-echo
-echo "[ホスト共有]"
-echo "ユーザ  : $hostuser"
-echo "IPaddr : $hostip"
-echo "共有１ : $hostshare1"
-echo "共有２ : $hostshare2"
-echo 
-echo "[コンテナ共有]"
-echo "ユーザ : $contuser"
-echo "共有１ : $contshare1"
-echo "共有２ : $contshare2"
-echo 
-echo "http port forwarding = $httpfw $phttp" 
-echo "samba port forwarding = $smbfw $psmb" 
-echo
-
-#　コンテナ削除
-docker stop $contname
-docker rm   $contname
-
-# コンテナ実行
-docker run $phttp $psmb \
- -it \
- --name $contname \
- --mount type=bind,src=$hostshare1,target=$contshare1 \
- --mount type=bind,src=$hostshare2,target=$contshare2 \
- $imgname
+# --------------------------------------------------------
+# イメージ作成
+docker build ./ -t $imgname
 #
+export contname
+export imgname
+export httpfw
+export smbfw
+export phttp
+export psmb
+export hostip
+
+#
+sh run_contena.sh
+#
+echo
+while :; do sleep 10; done
+echo exit run_contena.sh
+exit 0
