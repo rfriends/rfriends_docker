@@ -16,4 +16,4 @@ docker desktop(macOS)の場合
 $ sh rfriends_docker_mac.sh  
   
 詳細なインストール方法は以下を参照してください。  
-[dockerで「rfriendsでラジオ録音」rfriends3 版](https://github.com/rfriends/rfriends_docker/wiki)   
+[dockerでrfriends3の実行環境を作成してラジオ番組を録音する](https://github.com/rfriends/rfriends_docker/wiki)   
