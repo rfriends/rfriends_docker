@@ -8,7 +8,7 @@ imgname=rfriends3
 
 # ポートフォワーディング
 # no にすると同一LANからアクセス不可だが複数のコンテナが実行可能
-# windows環境の場合は、smbfw=no (必須)
+# windows環境の場合は、例　smbfw=no or 8445:445
 httpfw=yes
 smbfw=yes
 #
