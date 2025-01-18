@@ -19,9 +19,9 @@ psmb='-p 445:445'
 # --------------------------------------------------------
 # ホスト側の共有ディレクトリ
 hostuser=`whoami`
-cdir=`pwd`
-hostshare1=$cdir/share/smbdir/usr2
-hostshare2=$cdir/share/rfriends3/config
+cdir=`pwd`../share
+hostshare1=$cdir/smbdir/usr2
+hostshare2=$cdir/rfriends3/config
 
 # コンテナ側の共有ディレクトリ
 contuser=user
