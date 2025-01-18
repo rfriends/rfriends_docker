@@ -2,7 +2,7 @@
 #
 # コンテナ実行
 # --------------------------------------------------------
-
+# コンテナとイメージ
 contname=rfriends3
 imgname=rfriends3
 
@@ -11,8 +11,7 @@ imgname=rfriends3
 # windows環境の場合は、smbfw=no (必須)
 httpfw=yes
 smbfw=yes
-
-# ポートフォワード
+#
 phttp='-p 8000:8000'
 psmb='-p 445:445'
 
