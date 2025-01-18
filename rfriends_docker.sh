@@ -1,10 +1,22 @@
 #!/bin/sh
 #
-# for Dockerfile
-#
+# コンテナ実行
+# --------------------------------------------------------
+
 contname=rfriends3
 imgname=rfriends3
 
+# ポートフォワーディング
+# no にすると同一LANからアクセス不可だが複数のコンテナが実行可能
+# windows環境の場合は、smbfw=no (必須)
+httpfw=yes
+smbfw=yes
+
+# ポートフォワード
+phttp='-p 8000:8000'
+psmb='-p 445:445'
+
+# --------------------------------------------------------
 # ホスト側の共有ディレクトリ
 hostuser=`whoami`
 cdir=`pwd`
@@ -23,25 +35,20 @@ if [ ! -d $hostshare2 ]; then
   mkdir -p $hostshare2
 fi
 
-# ポートフォワーディング
-# no にすると同一LANからアクセス不可だが複数のコンテナが実行可能
-httpfw=yes
-smbfw=yes
+#　
+if [ $httpfw != "yes" ]; then
+  phttp=
+fi
+if [ $smbfw != "yes" ]; then
+  psmb=
+fi
 
-# ポート番号は変更不可
-httpport=8000
-smbport=445
-
-phttp='-p 8000:8000'
-psmb='-p 445:445'
-
-host=`hostname -I`
-hn=`hostname`
+hostip=`hostname -I`
 
 echo
 echo "[ホスト共有]"
-echo "ホスト : $hn"
-echo "IPaddr : $host"
+echo "ホスト : $hnostuser"
+echo "IPaddr : $hostip"
 echo "ユーザ : $hostuser"
 echo "共有１ : $hostshare1"
 echo "共有２ : $hostshare2"
@@ -51,7 +58,6 @@ echo "ユーザ : $contuser"
 echo "共有１ : $contshare1"
 echo "共有２ : $contshare2"
 echo 
-
 echo "http port forwarding = $httpfw $phttp" 
 echo "samba port forwarding = $smbfw $psmb" 
 echo
@@ -60,14 +66,7 @@ echo
 docker stop $contname
 docker rm   $contname
 
-#　コンテナ実行
-if [ $httpfw != "yes" ]; then
-  phttp=
-fi
-if [ $smbfw != "yes" ]; then
-  psmb=
-fi
-
+# コンテナ実行
 docker run $phttp $psmb \
  -it \
  --name $contname \
