@@ -32,6 +32,5 @@ export hostip
 sh run_contena.sh
 #
 echo
-while :; do sleep 10; done
 echo exit run_contena.sh
 exit 0
