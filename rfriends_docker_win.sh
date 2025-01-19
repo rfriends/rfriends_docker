@@ -15,7 +15,7 @@ smbfw=no
 phttp='-p 8000:8000'
 psmb='-p 445:445'
 
-hostip=`ipconfig | grep "inet " | grep -v "127.0.0.1"`
+hostip=`ipconfig | grep -a "IPv4" | cut -d ':' -f2`
 # --------------------------------------------------------
 # イメージ作成
 docker build ./ -t $imgname
