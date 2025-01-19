@@ -17,7 +17,11 @@ rfriends3dir=/home/$user/rfriends3
 host=`hostname -i`
 hn=`hostname`
 echo ${host}:${port} > $rfriends3dir/rfriends3_server.txt
+echo
+echo "container IPaddress : $host"
+date
 #
+echo
 sudo service cron start
 sudo service atd start
 #
@@ -26,10 +30,6 @@ sudo service lighttpd start
 
 # samba server
 sudo service smbd start
-
-echo
-echo "container IPaddress : $host"
-date
 
 recoverysw="on"
 
