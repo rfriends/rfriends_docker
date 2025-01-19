@@ -14,7 +14,7 @@ EOF
 
 rfriends3dir=/home/$user/rfriends3
 
-host=`ipconfig | grep "inet " | grep -v "127.0.0.1"`
+host=`hostname -i`
 hn=`hostname`
 echo ${host}:${port} > $rfriends3dir/rfriends3_server.txt
 #
