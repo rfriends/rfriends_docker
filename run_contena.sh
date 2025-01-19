@@ -28,27 +28,29 @@ if [ $smbfw != "yes" ]; then
   psmb=
 fi
 
+#　コンテナ削除
+docker stop $contname
+docker rm   $contname
+
+echo
+echo "http port forwarding = $httpfw $phttp" 
+echo "samba port forwarding = $smbfw $psmb" 
+
 echo
 echo "[ホスト共有]"
 echo "ユーザ  : $hostuser"
 echo "共有１ : $hostshare1"
 echo "共有２ : $hostshare2"
+
 echo 
 echo "[コンテナ共有]"
 echo "ユーザ : $contuser"
 echo "共有１ : $contshare1"
 echo "共有２ : $contshare2"
+
 echo 
-echo "http port forwarding = $httpfw $phttp" 
-echo "samba port forwarding = $smbfw $psmb" 
-echo
 echo "host IPaddress :"
 echo "$hostip"
-echo
-
-#　コンテナ削除
-docker stop $contname
-docker rm   $contname
 
 # コンテナ実行
 docker run $phttp $psmb \
