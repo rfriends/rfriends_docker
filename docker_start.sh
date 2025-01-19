@@ -66,7 +66,6 @@ opt="1,1,0,0,0,0,0"
 fl="$rfriends3dir/script/ex_rfriends.sh"
 sh $fl 0 $opt > /dev/null &
 echo デイリー処理をバックグラウンドで処理中です
-echo Webアクセスはすでに可能になっています
 echo ----- recovery end
 
 fi
