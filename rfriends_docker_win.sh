@@ -15,7 +15,7 @@ smbfw=no
 phttp='-p 8000:8000'
 psmb='-p 445:445'
 
-hostip=
+hostip=`ipconfig | grep "inet " | grep -v "127.0.0.1"`
 # --------------------------------------------------------
 # イメージ作成
 sudo chmod 666 /var/run/docker.sock
