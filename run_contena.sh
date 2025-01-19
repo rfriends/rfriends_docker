@@ -31,7 +31,6 @@ fi
 echo
 echo "[ホスト共有]"
 echo "ユーザ  : $hostuser"
-echo "IPaddr : $hostip"
 echo "共有１ : $hostshare1"
 echo "共有２ : $hostshare2"
 echo 
@@ -42,6 +41,9 @@ echo "共有２ : $contshare2"
 echo 
 echo "http port forwarding = $httpfw $phttp" 
 echo "samba port forwarding = $smbfw $psmb" 
+echo
+echo "host IPaddress :"
+echo "$hostip"
 echo
 
 #　コンテナ削除
