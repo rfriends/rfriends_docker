@@ -18,10 +18,11 @@ host=`hostname -i`
 hn=`hostname`
 echo ${host}:${port} > $rfriends3dir/rfriends3_server.txt
 echo
-echo "container IPaddress : $host"
-date
+echo "container IPaddress : 
+echo $host"
 #
 echo
+date
 sudo service cron start
 sudo service atd start
 #
