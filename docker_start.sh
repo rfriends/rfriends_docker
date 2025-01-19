@@ -37,7 +37,6 @@ if [ $recoverysw = "on" ]; then
 
 echo
 echo ----- recovery start
-echo
 
 # recovery crontab
 if [ -f $contshare2/crontab.conf ]; then
@@ -69,9 +68,10 @@ echo デイリー処理をバックグラウンドで処理中です
 echo Webアクセスはすでに可能になっています
 echo
 echo ----- recovery end
-echo
 
 fi
+
+echo rfriends3が使用できます。
 
 # don't exit
 while true; do sleep 10; done
