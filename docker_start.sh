@@ -71,6 +71,7 @@ echo ----- recovery end
 
 fi
 
+echo
 echo rfriends3が使用できます。
 
 # don't exit
