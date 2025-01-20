@@ -1,0 +1,21 @@
+#
+# rfriends3
+#
+# 2025/01/21 新規
+#
+services:
+  radio_container:
+    build: ./
+    image: rfriends3
+    #command: echo docker compose test
+    #environment:
+    volumes:
+      - type: bind
+        source: ${share_dir}/smbdir/usr2
+        target: /home/${container_user}/smbdir/usr2
+      - type: bind
+        source: ${share_dir}/rfriends3/config
+        target: /home/${container_user}/rfriends3/config
+    ports:
+      - ${http_port}
+      - ${samba_port}
