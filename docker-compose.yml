@@ -4,7 +4,7 @@
 # 2025/01/21 新規
 #
 services:
-  radio_container:
+  radio:
     build: ./
     image: rfriends3
     #command: echo docker compose test
