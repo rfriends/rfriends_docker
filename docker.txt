@@ -1,44 +1,10 @@
-2023/07/11
-2023/07/29 20.04 -> 22.04
-2025/01/10 24.04
-2025/01/13 user
-
-これはubuntu 24.04にrfriends3をインストールして実行するDockerfileです。
-Dockerfileと同じ場所にstart.shを置いてください。
-すでにdockerの環境は構築されているものとします。
-sudoなしで実行できるよう設定してください。
-
-１．イメージ作成
-
-ホストで
-$ id
-uid=1000(user) gid=1000(user)
-を実行し
-Dockerfileのuid,gidを設定してください
-ENV uid=1000
-ENV gid=1000
-
-$ docker build ./ -t rfriends3
-
-２．実行
-
-$ sh ex_rfriends.sh
-
-実行画面に
-172.17.0.2:8000
-のように表示されるので、ブラウザにそれを入力すれば、rfriends3が表示されます。
-また、portfw=yesで実行している場合は、他PCからホストのIPアドレス:8000でもアクセスできます。
-
-３．共有ディレクトリ  
-
-$HOME/share/usr2
-$HOME/share/rfriends3/config
-以下に録音データ、パラメータが保存されており、このデータはコンテナが終了しても残っています。  
-ただし、予約、録音途中のデータは消えます。  
-  
-４．その他  
-  
 コマンド覚書  
+
+compose
+docker compose up
+docker compose start
+docker compose stop
+docker compose config
 
 shell アクセス
 docker ps
