@@ -6,6 +6,9 @@ contshare2=/home/$user/rfriends3/config
 if [ ! -d $contshare1 ]; then
   mkdir -p $contshare1
 fi
+sudo chown -R $user:$user $contshare1
+sudo chown -R $user:$user $contshare2
+
 #
 cat <<EOF > $contshare2/usrdir.ini
 usrdir = "$contshare1/"
