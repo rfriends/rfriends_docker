@@ -9,7 +9,7 @@ $ git clone https://github.com/rfriends/rfriends_docker.git
 $ cd rfriends_docker   
 
 Docker Engineの場合  
-$ docker compose up
+$ docker compose up  
 ~~$ sh rfriends_docker.sh~~  
   
 Docker Desktop for windowsの場合  
