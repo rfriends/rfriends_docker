@@ -25,6 +25,7 @@ RUN groupadd -g $gid $user
 RUN useradd -m -s /bin/bash -u $uid -g $gid -G sudo $user
 RUN echo $user:$user | chpasswd
 RUN echo "$user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+ENV group=`groups $user | cut -d " " -f 1`
 
 # 文字化け対策
 ENV LANG=C.UTF-8
@@ -52,8 +53,9 @@ RUN apt-get -y install lighttpd lighttpd-mod-webdav php-cgi
 COPY 15-fastcgi-php.conf /etc/lighttpd/conf-available/.
 COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
 RUN sed -i s%rfriendshomedir%/home/$user%g /etc/lighttpd/lighttpd.conf && \
-    sed -i s%rfriendsuser%$user%g /etc/lighttpd/lighttpd.conf && \
-    sed -i s%rfriendsport%$port%g /etc/lighttpd/lighttpd.conf
+    sed -i s%rfriendsuser%$user%g          /etc/lighttpd/lighttpd.conf && \
+    sed -i s%rfriendsgroup%$group%g        /etc/lighttpd/lighttpd.conf && \
+    sed -i s%rfriendsport%$port%g          /etc/lighttpd/lighttpd.conf
 RUN mkdir -p /var/cache/lighttpd
 
 # samba
