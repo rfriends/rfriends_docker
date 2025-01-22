@@ -33,8 +33,7 @@ sudo service atd start
 sudo service lighttpd start
 
 # samba server
-# 現在、サービス開始をやめています
-#sudo service smbd start
+sudo service smbd start
 
 recoverysw="on"
 
