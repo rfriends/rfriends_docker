@@ -12,6 +12,7 @@ RUN userdel ubuntu && rm -rf /home/ubuntu
 # user設定（環境に応じて変更）
 # uid,gidはホストの実行ユーザに合わせる
 ENV user=user
+ENV group=user
 ENV uid=1000
 ENV gid=1000
 
@@ -25,7 +26,6 @@ RUN groupadd -g $gid $user
 RUN useradd -m -s /bin/bash -u $uid -g $gid -G sudo $user
 RUN echo $user:$user | chpasswd
 RUN echo "$user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-ENV group=`groups $user | cut -d " " -f 1`
 
 # 文字化け対策
 ENV LANG=C.UTF-8
