@@ -22,7 +22,7 @@ EXPOSE $port
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y sudo
 # $userを追加し、sudo,NOPASSWD
-RUN groupadd -g $gid $user
+RUN groupadd -g $gid $group
 RUN useradd -m -s /bin/bash -u $uid -g $gid -G sudo $user
 RUN echo $user:$user | chpasswd
 RUN echo "$user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
