@@ -37,8 +37,10 @@ ENV TZ=Asia/Tokyo
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 # rfriends3 
-ENV SITE=https://github.com/rfriends/rfriends3/releases/latest/download
+#ENV SITE=https://github.com/rfriends/rfriends3/releases/latest/download
+ENV SITE=https://raw.githubusercontent.com/rfriends/rfriends3_core/main
 ENV SCRIPT=rfriends3_latest_script.zip
+ENV SCRIPTVER=_Rfriends3_0
 ENV BASE=/home/$user/rfriends3
 
 # rfriends用アプリのインストール
