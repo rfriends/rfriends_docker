@@ -13,9 +13,11 @@ services:
       - type: bind
         source: ${share_dir}/smbdir/usr2
         target: /home/${container_user}/smbdir/usr2
+        bind: create_host_path: true
       - type: bind
         source: ${share_dir}/rfriends3/config
         target: /home/${container_user}/rfriends3/config
+        bind: create_host_path: true
     ports:
       - ${http_port}:8000
       # - ${samba_port}:445
