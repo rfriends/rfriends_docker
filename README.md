@@ -10,4 +10,15 @@ $ cd rfriends_docker
 $ docker compose up  
   
 詳細なインストール方法は以下を参照してください。  
-[dockerでrfriends3の実行環境を作成してラジオ番組を録音する](https://github.com/rfriends/rfriends_docker/wiki)   
+  
+・Docker_Engine編  
+https://github.com/rfriends/rfriends/blob/gh-pages/distro/docker_engine.md  
+  
+・Docker Desktop for Windows編  
+https://github.com/rfriends/rfriends/blob/gh-pages/distro/docker_windows.md  
+  
+・Docker Desktop for macOS編  
+https://github.com/rfriends/rfriends/blob/gh-pages/distro/docker_macos.md  
+   
+
+
