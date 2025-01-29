@@ -10,15 +10,8 @@ $ cd rfriends_docker
 $ docker compose up  
   
 詳細なインストール方法は以下を参照してください。  
+https://github.com/rfriends/rfriends/blob/gh-pages/distro/docker.md  
   
-・Docker_Engine編  
-https://github.com/rfriends/rfriends/blob/gh-pages/distro/docker_engine.md  
-  
-・Docker Desktop for Windows編  
-https://github.com/rfriends/rfriends/blob/gh-pages/distro/docker_windows.md  
-  
-・Docker Desktop for macOS編  
-https://github.com/rfriends/rfriends/blob/gh-pages/distro/docker_macos.md  
    
 
 
