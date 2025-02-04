@@ -10,7 +10,8 @@ $ cd rfriends_docker
 $ docker compose up  
   
 詳細なインストール方法は以下を参照してください。  
-https://github.com/rfriends/rfriends/blob/gh-pages/distro/docker.md  
+https://rfriends.github.io/rfriends/distro/docker.html
+
   
    
 
