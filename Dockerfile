@@ -4,6 +4,7 @@
 # 2025/01/10 24.04
 # 2025/01/12 lighttpd
 # 2025/01/16 fix
+# 2025/09/27 add p7zip
 #
 FROM ubuntu:24.04
 # 24.04で最初から存在するubuntuユーザを削除
@@ -48,7 +49,8 @@ RUN apt-get -y install \
 unzip nano vim dnsutils iproute2 tzdata \
 at cron wget curl atomicparsley \
 php-cli php-xml php-zip php-mbstring php-json php-curl php-intl \
-ffmpeg
+ffmpeg \
+p7zip
 
 # lighttpd
 RUN apt-get -y install lighttpd lighttpd-mod-webdav php-cgi
