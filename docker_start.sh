@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# このスクリプトはコンテナ内で実行されます。
+#
 contshare1=/home/$user/smbdir/usr2
 contshare2=/home/$user/rfriends3/config
 #
