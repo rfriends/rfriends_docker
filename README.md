@@ -1,9 +1,6 @@
 rfriends_dockerはdocker環境でrfriends3を動作させるスクリプトです。  
   
-コンテナを終了させても、ホストのrfriends_dockerに録音データ、パラメータ設定が保存されています。  
-  
-rfriends_docker/share/smbdir/usr2  
-rfriends_docker/share/rfriends3/config   
+2026/05/07 混乱しないようにshareディレクトリの位置を$HOME内からrfriends_docker内に変更しました。  
   
 $ cd ~/  
 $ sudo apt-get -y install git  
@@ -12,5 +9,11 @@ $ git clone https://github.com/rfriends/rfriends_docker.git
 $ cd rfriends_docker   
 $ docker compose up  
   
+コンテナを終了させても、ホストのrfriends_dockerに録音データ、パラメータ設定が保存されています。  
+  
+rfriends_docker/share/smbdir/usr2  
+rfriends_docker/share/rfriends3/config   
+  
 詳細なインストール方法は以下を参照してください。  
-https://rfriends.github.io/rfriends/distro/docker.html
+https://rfriends.github.io/rfriends/distro/docker.html  
+
