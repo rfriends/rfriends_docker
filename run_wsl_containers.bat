@@ -1,3 +1,5 @@
 @echo off
+mkdir -p ./share/rfriends3/config
+mkdir -p ./share/smbdir/usr2
 call load_env.bat
 wslc run -d --name %container_name% -p %http_port%:8000 -v "%share_dir%\smbdir\usr2:/home/user/smbdir/usr2" -v "%share_dir%\rfriends3\config:/home/user/rfriends3/config" %image_name%
