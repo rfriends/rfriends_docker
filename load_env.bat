@@ -1,4 +1,4 @@
 @echo off
-for /f "usebackq eol=# tokens=1* delims==" %%i in (".env") do (
+for /f "usebackq tokens=1* delims==" %%i in (`findstr /v "^#" ".env"`) do (
     set "%%i=%%~j"
 )
