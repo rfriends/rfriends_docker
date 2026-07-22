@@ -11,3 +11,8 @@ container run -d \
  -v "${share_dir}/smbdir/usr2:/home/user/smbdir/usr2" \
  -v "${share_dir}/rfriends3/config:/home/user/rfriends3/config" \
  "${image_name}"
+ #
+ echo
+ container image ls
+ echo
+ container ls
