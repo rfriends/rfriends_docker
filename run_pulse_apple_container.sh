@@ -8,6 +8,8 @@ container build --platform linux/arm64 -t ${image_name} .
 
 killall pulseaudio 2>/dev/null
 pulseaudio --daemon
+#pulseaudio --load=module-coreaudio-detect --load=module-native-protocol-tcp="auth-anonymous=1 port=4713" --exit-idle-time=-1 --daemon
+
 
 container run -d --name "${container_name}" \
  -p "${http_port}":8000 \
