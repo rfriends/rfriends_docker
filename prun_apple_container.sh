@@ -1,4 +1,5 @@
 #!/bin/zsh
+exit
 source ./load_env.sh
 mkdir -p ${share_dir}/smbdir/usr2
 mkdir -p ${share_dir}/rfriends3/config
