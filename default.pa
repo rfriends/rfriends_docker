@@ -1,0 +1,2 @@
+load-module module-coreaudio-detect
+load-module module-native-protocol-tcp auth-anonymous=1 port=4713
