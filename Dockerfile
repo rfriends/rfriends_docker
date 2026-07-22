@@ -6,6 +6,7 @@
 # 2025/01/16 fix
 # 2025/09/27 add p7zip
 # 2026/07/22 add pulseaudio
+# 2026/07/23 add apt-get clean
 #
 FROM ubuntu:24.04
 # 24.04で最初から存在するubuntuユーザを削除
@@ -13,6 +14,7 @@ RUN userdel ubuntu && rm -rf /home/ubuntu
 #
 # user設定（環境に応じて変更）
 # uid,gidはホストの実行ユーザに合わせる
+# apple containerの場合は変更するとエラーになる
 ENV user=user
 ENV group=user
 ENV uid=1000
@@ -22,7 +24,7 @@ ENV gid=1000
 ENV port=8000
 EXPOSE $port
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y sudo
+RUN apt-get clean && apt-get update && apt-get upgrade -y && apt-get install -y sudo
 # $userを追加し、sudo,NOPASSWD
 RUN groupadd -g $gid $group
 RUN useradd -m -s /bin/bash -u $uid -g $gid -G sudo $user
@@ -50,8 +52,10 @@ RUN apt-get -y install \
 unzip nano vim dnsutils iproute2 tzdata \
 at cron wget curl atomicparsley \
 php-cli php-xml php-zip php-mbstring php-json php-curl php-intl \
-ffmpeg \
-p7zip \
+ffmpeg p7zip
+
+# pulse audio
+RUN apt-get -y install \
 pulseaudio-utils alsa-utils
 
 # lighttpd
