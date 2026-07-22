@@ -5,6 +5,7 @@
 # 2025/01/12 lighttpd
 # 2025/01/16 fix
 # 2025/09/27 add p7zip
+# 2026/07/22 add pulseaudio
 #
 FROM ubuntu:24.04
 # 24.04で最初から存在するubuntuユーザを削除
@@ -50,7 +51,8 @@ unzip nano vim dnsutils iproute2 tzdata \
 at cron wget curl atomicparsley \
 php-cli php-xml php-zip php-mbstring php-json php-curl php-intl \
 ffmpeg \
-p7zip
+p7zip \
+pulseaudio-utils alsa-utils
 
 # lighttpd
 RUN apt-get -y install lighttpd lighttpd-mod-webdav php-cgi
