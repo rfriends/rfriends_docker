@@ -65,8 +65,9 @@ echo "/home/$user/tmp/" > $rfriends3dir/etc/tmpdef
 # らじる聞き逃し録音
 # らじるゴガク録音
 # ポッドキャスト
+# ウェブラジオ
 # クリーン処理
-opt="1,1,0,0,0,0,0"
+opt="1,1,0,0,0,0,0,0"
 #
 fl="$rfriends3dir/script/ex_rfriends.sh"
 sh $fl 0 $opt > /dev/null &
